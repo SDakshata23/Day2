@@ -1,19 +1,21 @@
 package com.demo1;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Register {
 	public static void main(String args[]) {
 		Scanner in = new Scanner(System.in);
-		
 		Encapsule obj=new Encapsule();
+		ArrayList<Encapsule> arraylist=new ArrayList<>();  //Arraylist
 		boolean run=true;
 		while(run)
 		{
 			System.out.println("1)Are You a new user?");
 			System.out.println("2)Exixting user?");
-			System.out.println("3)EXIT");
+			System.out.println("3)Show all user");
+			System.out.println("4)EXIT");
 			System.out.println("Enter Option:");
 			int opt=in.nextInt();
 			in.nextLine();
@@ -41,19 +43,42 @@ public class Register {
 				obj.setcreateAt(createAt);
 				obj.setupdateAt(updateAt);
 				obj.setisActive(isActive);
+				
+				arraylist.add(obj);
 			}
 			else if(opt==2)
-			{
-				System.out.println(obj.getUsername());
-				System.out.println(obj.getPassword());
-				System.out.println(obj.getMail());
-				System.out.println(obj.getAddress());
-				System.out.println(obj.getNumber());
-				System.out.println(obj.getcreateAt());
-				System.out.println(obj.getupdateAt());
-				System.out.println(obj.getisActive());
+			{	boolean user=false;
+				System.out.println("Enter username:");
+				String name=in.nextLine();
+				
+				System.out.println("Enter password:");
+				String pass=in.nextLine();
+				
+				for(int i=0;i<arraylist.size();i++) {
+					Encapsule userlogin=arraylist.get(i);  //get gives index
+					if(userlogin.getUsername().equals(name) && userlogin.getPassword().equals(pass)) {
+						System.out.println("You're Logged in!!!");
+						System.out.println("your profile");
+					System.out.println(userlogin.getUsername());
+					System.out.println(userlogin.getPassword());
+					System.out.println(userlogin.getMail());
+					System.out.println(userlogin.getAddress());
+					System.out.println(userlogin.getNumber());
+					user=true;
+					break;
+					}
+				}
+				if(!user) {
+					System.out.println("Invalid Username and password");
+				}
+				
 			}
-			else if(opt==3) {
+			
+			else if(opt==3)
+			{
+				System.out.println(arraylist);
+			}
+			else if(opt==4) {
 				run=false;
 			}
 			
@@ -61,5 +86,8 @@ public class Register {
 				System.out.println("Invalid Option");
 			}
 		}
+		 
 	}
+	
 }
+
