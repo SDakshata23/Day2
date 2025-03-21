@@ -6,40 +6,60 @@ import java.util.Date;
 public class Register {
 	public static void main(String args[]) {
 		Scanner in = new Scanner(System.in);
-		System.out.println("Enter username:");
-		String usrname = in.nextLine();
-		System.out.println("Enter password:");
-		String password = in.nextLine();
-		System.out.println("Enter email address:");
-		String mail = in.nextLine();
-		System.out.println("Enter Address:");
-		String address = in.nextLine();
-		System.out.println("Enter Number:");
-		long number=in.nextLong();
-		Date createAt = new Date();
-		Date updateAt = new Date();
-		boolean isActive = true;
+		
 		Encapsule obj=new Encapsule();
+		boolean run=true;
+		while(run)
+		{
+			System.out.println("1)Are You a new user?");
+			System.out.println("2)Exixting user?");
+			System.out.println("3)EXIT");
+			System.out.println("Enter Option:");
+			int opt=in.nextInt();
+			in.nextLine();
+			if(opt==1)
+			{  
+				System.out.println("Enter username:");
+				String usrname = in.nextLine();
+				System.out.println("Enter password:");
+				String password = in.nextLine();
+				System.out.println("Enter email address:");
+				String mail = in.nextLine();
+				System.out.println("Enter Address:");
+				String address = in.nextLine();
+				System.out.println("Enter Number:");
+				long number=in.nextLong();
+				Date createAt = new Date();
+				Date updateAt = new Date();
+				boolean isActive = true;
 		
-		obj.setUsername(usrname);
-		obj.setPassword(password);
-		obj.setMail(mail);
-		obj.setAddress(address);
-		obj.setNumber(number);
-		obj.setcreateAt(createAt);
-		obj.setupdateAt(updateAt);
-		obj.setisActive(isActive);
-		
-		System.out.println(obj.getUsername());
-		System.out.println(obj.getPassword());
-		System.out.println(obj.getMail());
-		System.out.println(obj.getAddress());
-		System.out.println(obj.getNumber());
-		System.out.println(obj.getcreateAt());
-		System.out.println(obj.getupdateAt());
-		System.out.println(obj.getisActive());
-		
-		
+				obj.setUsername(usrname);
+				obj.setPassword(password);
+				obj.setMail(mail);
+				obj.setAddress(address);
+				obj.setNumber(number);
+				obj.setcreateAt(createAt);
+				obj.setupdateAt(updateAt);
+				obj.setisActive(isActive);
+			}
+			else if(opt==2)
+			{
+				System.out.println(obj.getUsername());
+				System.out.println(obj.getPassword());
+				System.out.println(obj.getMail());
+				System.out.println(obj.getAddress());
+				System.out.println(obj.getNumber());
+				System.out.println(obj.getcreateAt());
+				System.out.println(obj.getupdateAt());
+				System.out.println(obj.getisActive());
+			}
+			else if(opt==3) {
+				run=false;
+			}
+			
+			else {
+				System.out.println("Invalid Option");
+			}
+		}
 	}
-	
 }
